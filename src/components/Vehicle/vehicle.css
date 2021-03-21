@@ -1,9 +1,21 @@
 img{
     /* height: 00px; */
-    width: 100%;
+    width: 300px;
 }
 .vehicle{
-    border:1px solid;
-    width: 200px;
-    margin: 20px;
+    margin:15px;
+    padding:15px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow: 3px 5px 10px black;
+    /* float: left; */
+    display:inline;
+    /* width: 50px ; */
+    /* height: 330px; */
+}
+Link{
+    color:black;
+}
+.vehicle-name{
+    text-decoration: none;
 }

@@ -5,11 +5,18 @@ import { UserContext } from '../../App';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "./LoginManager";
 import firebase from "firebase/app";
 import "firebase/auth";
+import './login.css'
 import firebaseConfig from './firebase.config';
+import { Form } from 'react-bootstrap';
+// import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 
 
 const SignUp = () => {
+
+    let [error, setError]  = useState('');
+    let [password,setPassword] = useState('');
+    let [password2,setPassword2] = useState('');
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const history = useHistory();
     const location = useLocation();
@@ -61,6 +68,7 @@ const SignUp = () => {
             .catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
+                setError(errorMessage);
                 console.log(errorCode, errorMessage);
                 // ..
             });
@@ -118,6 +126,21 @@ const SignUp = () => {
           history.replace(from);
       }
   }
+  const handleChange = e => {
+    const {name, value} = e.target;
+    console.log(name, value);
+    if (name === 'password'){
+      setPassword(value);
+      console.log(value);
+    }
+    else if(name === 'password2'){
+      setPassword2(value);
+      // console.log(value);
+    }
+    console.log(password2);
+    
+  }
+
   const handleGoogleSignIn = () => {
     const googleProvider = new firebase.auth.GoogleAuthProvider();
     firebase
@@ -146,26 +169,42 @@ const SignUp = () => {
     // console.log(watch("example")); // watch input value by passing the name of it
   
     return (
-    //   {/* "handleSubmit" will validate your inputs before invoking "onSubmit" */}
-      <form onSubmit={handleSubmit(onSubmit)}>
-      {/* register your input into the hook by invoking the "register" function */}
-        <input onBlur={handleBlur} placeholder='email' name="email"  ref={register} />
-        
-        <br/>
-        <input onBlur={handleBlur} type="password" placeholder='password' name="password"  ref={register} />
-        <br/>
-        
-        {/* include validation with required or other standard HTML validation rules */}
+
+      <form className="login-form m-5 w-50 justify-content-center" onSubmit={handleSubmit(onSubmit)}>
+        <div className="form-group">
         {newUser && (
-            <input placeholder='name' name="name" ref={register({ required: true })} />
+            <input className="form-control" placeholder='name' name="name" ref={register({ required: true })} />
         )}
-        {/* errors will return when field validation fails  */}
-        {errors.exampleRequired && <span>This field is required</span>}
-        {/* {newUser? <button>sign up</button>: <button>sign in</button> } */}
-        <button onClick={()=>setNewUser(!newUser)}>{newUser? 'sign up': 'sign in'}</button>
+        </div>
+        <div className="form-group">
+          <input className="form-control" onBlur={handleBlur} placeholder='email' name="email"  ref={register} />
+        </div>
+
+        <div className="form-group">
+          <input className="form-control" onChange={handleChange} onBlur={handleBlur} type="password" placeholder='password' name="password"  ref={register} />
+        </div>
         
-        <input onBlur={handleBlur} type="submit" />
-        <button onClick={handleGoogleSignIn}>google sign in</button>
+
+        <div className="form-group">
+          {newUser && (
+            <input className="form-control" onChange={handleChange} onBlur={handleBlur} type="password" placeholder='password' name="password2"  ref={register} />
+            
+          )}
+          <p style={{color:'red'}}>{password && password2 && password !== password2 && 'password dont match'}</p>
+        </div>
+        <div style={{color:'red'}}>
+          {error}
+        </div>
+        
+        <div>
+        <input onBlur={handleBlur} type="submit" value={newUser ? "Create an account" : "Log in"} />
+
+        <p>{newUser ? 'Already have an account?' : 'Don\'t have an account?'} <button className='login' onClick={() => setNewUser(!newUser)} type="text" >{!newUser ? "create an account" : "Login"}</button> </p>
+
+        {/* <input onBlur={handleBlur} type="submit" /> */}
+
+        </div>
+        <button className="btn" onClick={handleGoogleSignIn}>Google sign in</button>
       </form>
       
     );

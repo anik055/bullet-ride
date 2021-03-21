@@ -13,16 +13,18 @@ const Vehicle = (props) => {
     // console.log(loggedInUser);
     // setLoggedInUser(loggedInUser);
     return (
-        <Link onClick={(e) =>{
+        <div className='w-50 card vehicle'>
+            <Link onClick={(e) =>{
             // console.log(loggedInUser);
             const newUser = loggedInUser;
             newUser.vehicle = {name: name, imgUrl: imgUrl};
             setLoggedInUser(newUser);
             // console.log(loggedInUser);
-        }} className='vehicle' to={`/book/${name}`}>
+        }}  to={`/book/${name}`}>
             <img src={imgUrl} alt=""/>
-            <h1>{name}</h1>
+            <h1 className="vehicle-name">{name}</h1>
         </Link>
+        </div>
     );
 };
 

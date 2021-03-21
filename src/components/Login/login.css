@@ -12,6 +12,9 @@
 
 .login-form{
   margin: 30px 100px;
+  /* text-align: center; */
+  justify-content: center;
+
 }
 
 .login-form input {
@@ -27,4 +30,8 @@
 
 .error{
   color: red;
+}
+
+.loginForm{
+  margin:5% 10% ;
 }

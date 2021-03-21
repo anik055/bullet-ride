@@ -10,29 +10,31 @@ import { UserContext } from '../../App';
 const Header = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     return (
-        <div  style={{ backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(${header})` }} className="header">
+        <div className="header">
             <nav className="nav">
-                <ul>
+                <ul className="container-fluid">
                     <li>
                         <img className="logo" src={logo} alt=""/>
                     </li>
-                    <li>
-                        <Link to="/home">Home</Link>
+                    <li className="text-dark text-decoration-none">
+                        <Link className="text-dark text-decoration-none" to="/home">Home</Link>
                     </li>
                     <li>
-                        <Link className="btn-book" to="/destination">Destination</Link>
+                        <Link className="text-dark text-decoration-none" to="/destination">Destination</Link>
                     </li>
                     {
                         loggedInUser.displayName || loggedInUser.name ? <li>
-                        <Link className="btn-book" to="#">{loggedInUser.displayName || loggedInUser.name}</Link>
+                        <Link className="text-dark text-decoration-none" to="#">{loggedInUser.displayName || loggedInUser.name}</Link>
                     </li>
                      :<li>
-                        <Link to="/login">Login</Link>
+                        <Link className="btn btn-danger" to="/login">Login</Link>
                     </li>
                     }
                     
                 </ul>
             </nav>
+            
+            
         </div>
     );
 };

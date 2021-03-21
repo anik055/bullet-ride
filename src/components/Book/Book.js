@@ -1,62 +1,54 @@
-import React, { useContext, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { UserContext } from '../../App';
-import bus from '../../images/bus.png';
-import car from '../../images/car.png';
-import train from '../../images/train.png';
-import bike from '../../images/bike.png';
+import React, { useState } from 'react';
+
+import map from '../../images/Map.png';
+import './book.css'
+import Ride from './Ride';
 
 const Book = () => {
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     let [pickFrom, setPickFrom] = useState('');
     let [pickTo, setPickTo] = useState('');
     let from;
     
-
-
-    const {bedType} = useParams();
-    // console.log(img);
-    // console.log(`../../images/${bedType}.png`);
-    // console.log(loggedInUser);
-    // const handleClick = () => {
-    //     return (
-    //         {}
-    //     )
-    // }
-    // const {name, imgUrl} = loggedInUser.vehicle;
     return (
-        <div style={{textAlign: 'center'}}>
+        <div className="d-lg-flex">
+            <div className="w-70 ml-5 my-1 p-5 form-group" >
             <div>
-                <p>pick from</p>
-                <input onBlur={e => {
+                <p>Pick from</p>
+                <input className="p-3 my-2 form-control" onBlur={e => {
                     from = e.target.value
                     setPickFrom(e.target.value);
                     console.log(e.target.value);
                     pickFrom = e.target.value;
                     console.log(from);
                 }} type="text" name="" id=""/>
-                <p>pick to</p>
-                <input onBlur={e => {
+                <p>Pick to</p>
+                <input className="p-3 form-control" onBlur={e => {
                     setPickTo(e.target.value);
                 }} type="text"/>
                 <br/>
-                <button>search</button>
+                <input className="form-control" type="date" id="birthday" name="birthday"></input>
+                <br/>
+                <button className="btn btn-primary">Search</button>
             </div>
             {pickFrom && pickTo && (
                 <div>
+                    <div className="my-3 rounded p-3 bg-warning">
+                        <h3> {pickFrom}</h3>
+                        <h6>to</h6>
+                        <h3>{pickTo}</h3>
+                    </div>
                     <div>
-                <h1> {pickFrom} to {pickTo}</h1>
-            </div>
-            <div>
-            <img src={bedType==='BUS' ? bus : bedType==='CAR' ? car : bedType === 'TRAIN' ? train : bike} alt=""/>
-            <p>{bedType}</p>
-            </div>
+                        <Ride/>
+                        <Ride/>
+                        <Ride/>
+                    </div>
                 </div>
             ) }
-            <div>
-            </div>
-            
+        </div>
+            <div >
+                <img className="map w-70 h-50 my-5" src={map} alt=""/>
 
+            </div>
         </div>
     );
 };
