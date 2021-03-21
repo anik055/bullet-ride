@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import Room from '../Room/Room';
 import Vehicle from '../Vehicle/Vehicle';
-
-
 import './home.css';
 import vehiclesData from '../../fakedata/vehicles';
 
 const Home = () => {
-    const [vehicles, setVehicles] = useState([])
+    const [vehicles, setVehicles] = useState([]);
+
     useEffect(()=>{
         setVehicles(vehiclesData);
-    },[])
+    },[]);
     
     return (
         <div className="d-lg-flex vehicle-container" >

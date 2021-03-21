@@ -1,8 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
-import header from '../../images/bg.png';
-// import logo from '../../images/logoo.jpg';
 import logo from '../../images/lo.png'
 import { UserContext } from '../../App';
 
@@ -33,8 +31,6 @@ const Header = () => {
                     
                 </ul>
             </nav>
-            
-            
         </div>
     );
 };
