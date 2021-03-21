@@ -1,0 +1,30 @@
+.login {
+    background: none!important;
+  border: none;
+  padding: 0!important;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.login-form{
+  margin: 30px 100px;
+}
+
+.login-form input {
+  display:block;
+  margin-top: 30px;
+  padding: 5px;
+  border: 1px solid gray;
+  border-radius:5px;
+  width: 300px;
+
+
+}
+
+.error{
+  color: red;
+}
