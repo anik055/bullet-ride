@@ -17,9 +17,7 @@ const Book = () => {
                 <input className="p-3 my-2 form-control" onBlur={e => {
                     from = e.target.value
                     setPickFrom(e.target.value);
-                    console.log(e.target.value);
                     pickFrom = e.target.value;
-                    console.log(from);
                 }} type="text" name="" id=""/>
                 <p>Pick to</p>
                 <input className="p-3 form-control" onBlur={e => {

@@ -86,7 +86,6 @@ const SignUp = () => {
 
     }
     const handleBlur = (event) => {
-        console.log(event);
         let isFormValid = true;
         if (event.target.name === "email") {
           isFormValid = /\S+@\S+\.\S+/.test(event.target.value);
@@ -106,7 +105,6 @@ const SignUp = () => {
   
   const handleChange = e => {
     const {name, value} = e.target;
-    console.log(name, value);
     if (name === 'password'){
       setPassword(value);
     }
